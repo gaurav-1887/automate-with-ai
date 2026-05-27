@@ -42,7 +42,7 @@ function AdminLogin() {
 
       const response = await fetch(
 
-        "http://localhost:5000/api/auth/login",
+        "https://automate-with-ai-p2am.vercel.app/api/auth/login",
 
         {
 

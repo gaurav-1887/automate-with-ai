@@ -60,7 +60,7 @@ function Dashboard() {
 
       const response = await fetch(
 
-        "http://localhost:5000/api/leads/all",
+        "https://automate-with-ai-p2am.vercel.app/api/leads/all",
 
         {
 
@@ -113,7 +113,7 @@ const deleteLead = async (id) => {
 
     const response = await fetch(
 
-      `http://localhost:5000/api/leads/${id}`,
+      `https://automate-with-ai-p2am.vercel.app/api/leads/${id}`,
 
       {
 

@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
     // SAVE TO BACKEND DATABASE
 
     const response = await fetch(
-  "http://localhost:5000/api/leads/create",
+  "https://automate-with-ai-p2am.vercel.app/api/leads/create",
       {
 
         method: "POST",
