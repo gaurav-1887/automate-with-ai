@@ -1,232 +1,93 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from 'lucide-react';
+import {
+  FaRobot,
+  FaCode,
+  FaPython,
+  FaDatabase,
+  FaCloud
+} from "react-icons/fa"
 
-function Services({
-  styles,
-  servicesData,
-  setSelectedService,
-  applyTextOutlineGlow,
-  removeTextOutlineGlow
-}) {
+function Services() {
+
+  const services = [
+
+    {
+      icon: <FaRobot />,
+      title: "AI Automation",
+      desc: "AI workflows, chatbots & automation systems."
+    },
+
+    {
+      icon: <FaCode />,
+      title: "Web Development",
+      desc: "Modern futuristic websites & web apps."
+    },
+
+    {
+      icon: <FaPython />,
+      title: "Python Services",
+      desc: "Automation scripts & custom Python tools."
+    },
+
+    {
+      icon: <FaDatabase />,
+      title: "Data Science",
+      desc: "Machine learning & predictive analytics."
+    },
+
+    {
+      icon: <FaCloud />,
+      title: "Salesforce CRM",
+      desc: "CRM setup & workflow integrations."
+    }
+
+  ]
 
   return (
 
-    <section
-      id="services"
-      style={{
-        padding: '40px 0 100px 0',
-        textAlign: 'center'
-      }}
-    >
+    <section className="py-24 px-5">
 
-      {/* HEADING */}
+      <div className="max-w-7xl mx-auto">
 
-      <div
-        style={{
-          textAlign: "center",
-          marginBottom: "70px"
-        }}
-      >
+        {/* Heading */}
+        <h2 className="text-4xl md:text-6xl font-bold text-center mb-14">
 
-        <h2
-          style={{
-            color: "white",
-            fontSize: "3rem",
-            fontWeight: "900",
-            marginBottom: "18px"
-          }}
-        >
-
-          OUR
-
-          <span style={{ color: "#1e50ff" }}>
-            {" "}SERVICES
-          </span>
+          OUR <span className="text-blue-500">SERVICES</span>
 
         </h2>
 
-        <p
-          style={{
-            color: "#888",
-            maxWidth: "700px",
-            margin: "0 auto",
-            lineHeight: "1.8",
-            fontSize: "16px"
-          }}
-        >
+        {/* Cards */}
+        <div className="flex flex-wrap justify-center gap-8">
 
-          Premium AI automation, dashboards,
-          websites, and smart digital solutions
-          built for modern businesses.
+          {services.map((service, index) => (
 
-        </p>
+            <div
+              key={index}
+              className="w-full sm:w-[320px] bg-[#0c0c0c] border border-blue-500/20 rounded-2xl p-8 hover:border-blue-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+            >
 
-      </div>
+              <div className="text-4xl text-blue-500 mb-6">
 
-      {/* SERVICES GRID */}
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '30px'
-        }}
-      >
-
-        {servicesData.map((service) => (
-
-          <motion.div
-            className="floating-card glow-pulse fade-smooth"
-            key={service.id}
-
-            whileHover={{
-              y: -8,
-              boxShadow: '0 0 25px rgba(30,80,255,0.35)'
-            }}
-
-            transition={{ duration: 0.3 }}
-
-            style={styles.serviceCard}
-
-            onClick={() => setSelectedService(service)}
-
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#1e50ff';
-              e.currentTarget.style.boxShadow =
-                '0 0 25px rgba(30, 80, 255, 0.2)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-            }}
-
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor =
-                'rgba(30, 80, 255, 0.3)';
-              e.currentTarget.style.boxShadow = 'none';
-              e.currentTarget.style.transform = 'none';
-            }}
-          >
-
-            <div style={{ flexGrow: 1 }}>
-
-              {/* ICON + TITLE */}
-
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '16px',
-                  marginBottom: '28px'
-                }}
-              >
-
-                <div
-                  style={{
-                    padding: '12px',
-                    borderRadius: '6px',
-                    backgroundColor: '#000000',
-                    border: '1px solid #1e50ff',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                >
-
-                  {service.icon}
-
-                </div>
-
-                <h3
-                  style={{
-                    fontSize: '20px',
-                    fontWeight: 'bold',
-                    margin: 0,
-                    color: '#1e50ff',
-                    letterSpacing: '0.5px',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={applyTextOutlineGlow}
-                  onMouseLeave={(e) =>
-                    removeTextOutlineGlow(e, '#1e50ff')
-                  }
-                >
-
-                  {service.title}
-
-                </h3>
+                {service.icon}
 
               </div>
 
-              {/* POINTS */}
+              <h3 className="text-2xl font-bold mb-4">
 
-              <ul
-                style={{
-                  padding: 0,
-                  margin: 0,
-                  listStyle: 'none',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '16px'
-                }}
-              >
+                {service.title}
 
-                {service.points.map((point, index) => (
+              </h3>
 
-                  <li
-                    key={index}
-                    style={{
-                      color: '#bbb',
-                      fontSize: '14px',
-                      display: 'flex',
-                      alignItems: 'start',
-                      gap: '10px'
-                    }}
-                  >
+              <p className="text-gray-400 text-lg leading-relaxed">
 
-                    <span style={{ color: '#1e50ff' }}>
-                      •
-                    </span>
+                {service.desc}
 
-                    <span>
-                      {point}
-                    </span>
-
-                  </li>
-
-                ))}
-
-              </ul>
+              </p>
 
             </div>
 
-            {/* BOTTOM BUTTON */}
+          ))}
 
-            <div
-              style={{
-                marginTop: '32px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontSize: '13px',
-                fontWeight: 'bold',
-                borderTop: '1px solid rgba(30, 80, 255, 0.15)',
-                paddingTop: '18px',
-                color: '#1e50ff'
-              }}
-            >
-
-              VIEW CASE STUDIES OVERVIEW
-
-              <ArrowRight
-                style={{
-                  width: '14px',
-                  height: '14px'
-                }}
-              />
-
-            </div>
-
-          </motion.div>
-
-        ))}
+        </div>
 
       </div>
 
@@ -235,4 +96,4 @@ function Services({
   )
 }
 
-export default Services;
+export default Services
