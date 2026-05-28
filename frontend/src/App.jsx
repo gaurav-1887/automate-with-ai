@@ -1,106 +1,31 @@
-import React from "react";
-
-import AiChatbot from "./components/AiChatbot";
-import Loader from "./components/Loader";
-
-import {
-  Routes,
-  Route,
-  useLocation
-} from "react-router-dom";
-
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-
-import Home from "./pages/Home";
-import AdminLogin from "./pages/AdminLogin";
-import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Navbar"
+import Hero from "./components/Hero"
+import ParticlesBackground from "./components/ParticlesBackground"
+import Services from "./components/Services"
+import About from "./components/About"
+import Portfolio from "./components/Portfolio"
 
 function App() {
 
-  const [loading, setLoading] = React.useState(true);
-
-  React.useEffect(() => {
-
-    const timer = setTimeout(() => {
-
-      setLoading(false);
-
-    }, 2200);
-
-    return () => clearTimeout(timer);
-
-  }, []);
-
-  const location = useLocation();
-
-  const hideLayout =
-
-    location.pathname === "/admin-login" ||
-
-    location.pathname === "/dashboard";
-
-  if (loading) {
-
-    return <Loader />;
-
-  }
-
   return (
 
-    <div
-      style={{
-        backgroundColor: "#000814",
-        minHeight: "100vh",
-        color: "white"
-      }}
-    >
+    <div className="bg-black min-h-screen text-white relative">
 
-      {/* NAVBAR */}
+      <ParticlesBackground />
 
-      {
+      <Navbar />
 
-        !hideLayout && <Navbar />
+      <Hero />
 
-      }
+      <Services />
 
-      {/* ROUTES */}
+      <About />
 
-      <Routes>
-
-        <Route
-          path="/"
-          element={<Home />}
-        />
-
-        <Route
-          path="/admin-login"
-          element={<AdminLogin />}
-        />
-
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-
-      </Routes>
-
-      {/* FOOTER */}
-
-      {
-
-        !hideLayout && <Footer />
-
-      }
-
-      {/* AI CHATBOT */}
-
-      <AiChatbot />
+      <Portfolio />
 
     </div>
 
-  );
-
+  )
 }
 
-export default App;
+export default App

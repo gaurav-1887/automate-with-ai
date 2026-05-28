@@ -1,311 +1,72 @@
-import React from "react";
-
-import { motion } from "framer-motion";
-
-import { Zap } from "lucide-react";
-
+import { motion } from "framer-motion"
 
 function Hero() {
 
   return (
 
-    <motion.div
+    <section className="relative text-white flex flex-col justify-center items-center text-center min-h-screen px-6 overflow-hidden">
 
-      initial={{ opacity: 0, y: 40 }}
-
-      whileInView={{ opacity: 1, y: 0 }}
-
-      transition={{ duration: 0.8 }}
-
-      style={{
-
-        padding: "170px 20px 80px 20px",
-
-        textAlign: "center",
-
-        position: "relative"
-
-      }}
-
-    >
-
-      {/* TOP BADGE */}
-
+      {/* Glow */}
       <motion.div
-
-        whileHover={{
-
-          scale: 1.05,
-
-          boxShadow: "0 0 25px rgba(30,80,255,0.4)"
-
+        initial={{ opacity: 0.2 }}
+        animate={{ opacity: 0.5 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse"
         }}
+        className="absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-500 opacity-20 blur-3xl rounded-full"
+      ></motion.div>
 
-        style={{
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto">
 
-          display: "inline-flex",
-
-          alignItems: "center",
-
-          gap: "8px",
-
-          padding: "6px 18px",
-
-          borderRadius: "30px",
-
-          border: "1px solid #1e50ff",
-
-          backgroundColor: "rgba(30, 80, 255, 0.15)",
-
-          color: "#ffffff",
-
-          fontSize: "11px",
-
-          fontWeight: "bold",
-
-          textTransform: "uppercase",
-
-          marginBottom: "36px",
-
-          letterSpacing: "1.5px"
-
-        }}
-
-      >
-
-        <Zap
-
-          style={{
-
-            width: "12px",
-
-            height: "12px",
-
-            color: "#1e50ff"
-
-          }}
-
-        />
-
-        Smart AI Solutions for Modern Businesses
-
-      </motion.div>
-
-
-      {/* MAIN HEADING */}
-
-      <motion.h1
-
-        initial={{ opacity: 0, y: 30 }}
-
-        whileInView={{ opacity: 1, y: 0 }}
-
-        transition={{ duration: 0.9 }}
-
-        style={{
-
-          fontSize: "5rem",
-
-          fontWeight: "900",
-
-          marginBottom: "24px",
-
-          lineHeight: "1.05",
-
-          color: "#ffffff"
-
-        }}
-
-      >
-
-        AUTOMATE
-
-        <span
-
-          style={{
-
-            color: "#1e50ff"
-
-          }}
-
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
         >
 
-          {" "}WITH AI
+          SMART AI <span className="text-blue-500">AUTOMATION</span>
 
-        </span>
+          <br />
 
-      </motion.h1>
+          FOR MODERN BUSINESSES
 
+        </motion.h1>
 
-      {/* DESCRIPTION */}
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="text-gray-400 text-lg md:text-2xl mt-8 leading-relaxed px-2"
+        >
 
-      <motion.p
+          AI Automation, Websites, Data Science,
+          Salesforce CRM & Modern Tech Solutions.
 
-        initial={{ opacity: 0 }}
+        </motion.p>
 
-        whileInView={{ opacity: 1 }}
+        {/* Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="mt-10 px-8 md:px-12 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl text-lg md:text-2xl transition-all duration-300 shadow-[0_0_40px_rgba(59,130,246,0.9)] hover:scale-105"
+        >
 
-        transition={{ duration: 1 }}
+          Explore Services
 
-        style={{
-
-          color: "#aaa",
-
-          fontSize: "18px",
-
-          maxWidth: "750px",
-
-          margin: "0 auto 54px auto",
-
-          lineHeight: "1.7"
-
-        }}
-
-      >
-
-        Innovate ideas into impact. Automate your workflows to work smarter,
-
-        maximize operational efficiency, and elevate your brand beyond
-
-        standard limits.
-
-      </motion.p>
-
-
-      {/* FEATURE CARDS */}
-
-      <div
-
-        style={{
-
-          display: "grid",
-
-          gridTemplateColumns:
-
-            "repeat(auto-fit, minmax(220px, 1fr))",
-
-          gap: "20px",
-
-          maxWidth: "1000px",
-
-          margin: "0 auto"
-
-        }}
-
-      >
-
-        {[
-
-          {
-
-            title: "INNOVATE",
-
-            desc: "Ideas into Impact"
-
-          },
-
-          {
-
-            title: "AUTOMATE",
-
-            desc: "Work Smarter"
-
-          },
-
-          {
-
-            title: "OPTIMIZE",
-
-            desc: "Maximize Efficiency"
-
-          },
-
-          {
-
-            title: "ELEVATE",
-
-            desc: "Grow Beyond Limits"
-
-          }
-
-        ].map((item, idx) => (
-
-          <motion.div
-
-            key={idx}
-
-            whileHover={{
-
-              y: -8,
-
-              boxShadow:
-
-                "0 0 25px rgba(30,80,255,0.35)"
-
-            }}
-
-            style={{
-
-              background: "#071028",
-
-              border: "1px solid #1e50ff",
-
-              padding: "30px",
-
-              borderRadius: "20px"
-
-            }}
-
-          >
-
-            <div
-
-              style={{
-
-                fontSize: "16px",
-
-                fontWeight: "bold",
-
-                color: "#ffffff",
-
-                marginBottom: "6px"
-
-              }}
-
-            >
-
-              {item.title}
-
-            </div>
-
-
-            <div
-
-              style={{
-
-                fontSize: "13px",
-
-                color: "#777"
-
-              }}
-
-            >
-
-              {item.desc}
-
-            </div>
-
-          </motion.div>
-
-        ))}
+        </motion.button>
 
       </div>
 
-    </motion.div>
+    </section>
 
-  );
-
+  )
 }
 
-
-export default Hero;
+export default Hero

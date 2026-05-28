@@ -1,277 +1,82 @@
-import React from "react";
+import { useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
 
 function Navbar() {
 
-  const hoverEffect = (e) => {
-
-    e.target.style.color = "#1e50ff";
-
-    e.target.style.textShadow =
-      "0 0 14px rgba(30,80,255,0.95)";
-
-    e.target.style.transform =
-      "translateY(-2px)";
-
-    e.target.style.borderBottom =
-      "2px solid #1e50ff";
-
-    e.target.style.boxShadow =
-      "0 8px 25px rgba(30,80,255,0.18)";
-
-    e.target.style.background =
-      "rgba(30,80,255,0.08)";
-
-  };
-
-  const removeHover = (e) => {
-
-    e.target.style.color = "#ffffff";
-
-    e.target.style.textShadow = "none";
-
-    e.target.style.transform =
-      "translateY(0px)";
-
-    e.target.style.borderBottom =
-      "2px solid transparent";
-
-    e.target.style.boxShadow = "none";
-
-    e.target.style.background = "transparent";
-
-  };
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
 
-    <nav
-      style={{
-        width: "100%",
-        padding:
-          window.innerWidth < 768
-            ? "16px 18px"
-            : "18px 40px",
+    <nav className="w-full border-b border-blue-500 bg-black sticky top-0 z-50">
 
-        position: "fixed",
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
 
-        top: 0,
-        left: 0,
+        {/* Logo */}
+        <h1 className="text-2xl md:text-3xl font-bold text-blue-500">
 
-        zIndex: 999,
+          AUTOMATE WITH AI
 
-        background:
-          "rgba(2,4,10,0.82)",
+        </h1>
 
-        backdropFilter: "blur(16px)",
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-8 text-lg">
 
-        borderBottom:
-          "1px solid rgba(30,80,255,0.18)",
+          <li className="hover:text-blue-500 cursor-pointer transition-all duration-300">
+            Home
+          </li>
 
-        display: "flex",
+          <li className="hover:text-blue-500 cursor-pointer transition-all duration-300">
+            About
+          </li>
 
-        justifyContent: "space-between",
+          <li className="hover:text-blue-500 cursor-pointer transition-all duration-300">
+            Services
+          </li>
 
-        alignItems: "center",
+          <li className="hover:text-blue-500 cursor-pointer transition-all duration-300">
+            Portfolio
+          </li>
 
-        boxShadow:
-          "0 8px 25px rgba(0,0,0,0.35)"
-      }}
-    >
+          <li className="hover:text-blue-500 cursor-pointer transition-all duration-300">
+            Contact
+          </li>
 
-      {/* LOGO */}
+        </ul>
 
-      <a
-        href="/"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap:
-            window.innerWidth < 768
-              ? "10px"
-              : "14px",
-
-          textDecoration: "none"
-        }}
-      >
-
+        {/* Mobile Menu Button */}
         <div
-          className="glow-pulse"
-          style={{
-            width:
-              window.innerWidth < 768
-                ? "42px"
-                : "52px",
-
-            height:
-              window.innerWidth < 768
-                ? "42px"
-                : "52px",
-
-            borderRadius: "50%",
-
-            overflow: "visible",
-
-            border: "1px solid #1e50ff",
-
-            boxShadow:
-              "0 0 20px rgba(30,80,255,0.45)"
-          }}
+          className="md:hidden text-2xl cursor-pointer"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
 
-          <img
-            src="/AWA.png"
-            alt="logo"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              transform: "scale(0.92)"
-            }}
-          />
+          {menuOpen ? <FaTimes /> : <FaBars />}
 
         </div>
-
-        <div
-          style={{
-            color: "#ffffff",
-
-            fontSize:
-              window.innerWidth < 768
-                ? "14px"
-                : "24px",
-
-            fontWeight: "900",
-
-            letterSpacing: "0.5px",
-
-            whiteSpace: "nowrap"
-          }}
-        >
-
-          AUTOMATE
-
-          <span
-            style={{
-              color: "#1e50ff",
-
-              textShadow:
-                "0 0 12px rgba(30,80,255,0.8)"
-            }}
-          >
-            {" "}WITH AI
-          </span>
-
-        </div>
-
-      </a>
-
-      {/* LINKS */}
-
-      <div
-        style={{
-          display: "flex",
-
-          gap:
-            window.innerWidth < 768
-              ? "8px"
-              : "24px",
-
-          alignItems: "center",
-
-          flexWrap: "wrap"
-        }}
-      >
-
-        {/* HOME */}
-
-        <a
-          href="/"
-          style={navStyle}
-
-          onMouseEnter={hoverEffect}
-
-          onMouseLeave={removeHover}
-        >
-          Home
-        </a>
-
-        {/* SERVICES */}
-
-        <a
-          href="#services"
-          style={navStyle}
-
-          onMouseEnter={hoverEffect}
-
-          onMouseLeave={removeHover}
-        >
-          Services
-        </a>
-
-        {/* ABOUT */}
-
-        <a
-          href="#about"
-          style={navStyle}
-
-          onMouseEnter={hoverEffect}
-
-          onMouseLeave={removeHover}
-        >
-          About
-        </a>
-
-        {/* CONTACT */}
-
-        <a
-          href="#connect"
-          style={navStyle}
-
-          onMouseEnter={hoverEffect}
-
-          onMouseLeave={removeHover}
-        >
-          Contact
-        </a>
 
       </div>
 
+      {/* Mobile Menu */}
+      {menuOpen && (
+
+        <div className="md:hidden bg-black border-t border-blue-500">
+
+          <ul className="flex flex-col items-center gap-6 py-6 text-lg">
+
+            <li>Home</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Portfolio</li>
+            <li>Contact</li>
+
+          </ul>
+
+        </div>
+
+      )}
+
     </nav>
 
-  );
-
+  )
 }
 
-const navStyle = {
-
-  color: "#ffffff",
-
-  textDecoration: "none",
-
-  fontWeight: "700",
-
-  fontSize:
-    window.innerWidth < 768
-      ? "11px"
-      : "16px",
-
-  transition: "all 0.35s ease",
-
-  position: "relative",
-
-  padding:
-    window.innerWidth < 768
-      ? "6px 8px"
-      : "8px 14px",
-
-  borderRadius: "10px",
-
-  borderBottom:
-    "2px solid transparent",
-
-  cursor: "pointer",
-
-  backdropFilter: "blur(10px)"
-
-};
-
-export default Navbar;
+export default Navbar
